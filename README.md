@@ -1,1 +1,4 @@
-# TQS_98470 Artur Correia Romão
+# TQS Practical Classes
+
+Name: Artur Correia Romão
+Student ID: 98470
