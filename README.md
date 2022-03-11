@@ -1,3 +1,1 @@
-# tqs_98470
-
-Artur Correia Romão - nMec 98470
+# TQS_98470 Artur Correia Romão
