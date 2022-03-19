@@ -1,3 +1,4 @@
-# tqs_98470
+# TQS Practical Classes
 
-Artur Correia Romão - nMec 98470
+Name: Artur Correia Romão
+Student ID: 98470
