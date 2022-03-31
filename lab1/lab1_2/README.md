@@ -22,3 +22,5 @@ Those 10% are 2 returns from methods generateRandomDraw() and getDrawResults().
 
 ## Sets
 Sets package has only SetOfNaturals class which tests cover all relevant methods (only hashCode() and equals() are not widely covered)
+
+//
