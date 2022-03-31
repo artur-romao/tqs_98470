@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <groupId>uatqs</groupId>
+    <artifactId>gs-MockForHttpClient</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
-  <groupId>com.tqs.stack</groupId>
-  <artifactId>stack</artifactId>
-  <version>1.0-SNAPSHOT</version>
-
-  <name>stack</name>
-  <url>http://www.example.com</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <!-- test dependencies -->
-    <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-    <mockito-core.version>4.3.1</mockito-core.version>
-    <junit-jupiter.version>5.8.2</junit-jupiter.version>
-  </properties>
+      <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <!-- test dependencies -->
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <mockito-core.version>4.3.1</mockito-core.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
+    </properties>
 
 
-
-   <dependencies>
+    <dependencies>
 
         <!-- junit 5 -->
         <dependency>
@@ -73,8 +69,7 @@
 
     </dependencies>
 
-
-  <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
