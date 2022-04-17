@@ -1,3 +1,7 @@
+# Useful websites
+https://docs.sonarqube.org/latest/requirements/hardware-recommendations/
+https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html
+
 ## 6.2
 
 ### f)
@@ -11,3 +15,10 @@ Yes, analyzing the overall code, the SonarQube software evaluates the Reliabilit
 | Vulnerability |  --  |  --  |
 | Code smell (major) [1]|  Loop counter incremented at the end of the loop  |  Refactor the code in order to not assign to this loop counter from within the loop body  |
 | Code smell (major) [2]|  Standard outputs should not be used directly to log anything  |  Replace this use of System.out or System.err by a logger  |
+
+
+## 6.3
+
+### a)
+The technical debt found for this project is 30 minutes. This means that 30 minutes is the estimated time required to fix all Maintainability Issues/Code Smells.
+
