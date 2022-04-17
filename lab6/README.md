@@ -22,4 +22,4 @@ Yes, analyzing the overall code, the SonarQube software evaluates the Reliabilit
 ### a)
 The technical debt found for this project is 30 minutes. This means that 30 minutes is the estimated time required to fix all Maintainability Issues/Code Smells.
 
-![Alt text](https://github.com/artur-romao/tqs_98470/edit/main/lab6/a.png "Optional title")
+[![a.png](https://i.postimg.cc/FRP9bBj2/a.png)](https://postimg.cc/MMQ2qt3D)
