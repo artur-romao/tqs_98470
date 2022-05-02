@@ -91,7 +91,7 @@
             <div class="box">
                 <select onchange="redirectToCountry(event)">
                     <option> </option>
-                    <option th:each="country : ${countriesList}" th:text="${country.name}" th:value="${country.name} + '/' + ${country.isoCode}"></option>
+                    <option th:each="country : ${countriesList}" th:text="${country.Country}" th:value="${country.Country} + '/' + ${country.ThreeLetterSymbol}"></option>
                 </select>
               </div>
           <div class="container" style="justify-content: center; display: flex;">

@@ -2,173 +2,173 @@ package com.hw1.covidmetrics.model;
 
 public class Metrics {
     
-    private String name;
+    private String Country;
 
-    private String continent;
+    private String Continent;
 
-    private String isoCode;
+    private String ThreeLetterSymbol;
 
-    private long population;
+    private long Population;
 
-    private long totalCases;
+    private long TotalCases;
 
-    private long newCases;
+    private long NewCases;
 
-    private long totalDeaths;
+    private long TotalDeaths;
 
-    private long newDeaths;
+    private long NewDeaths;
 
-    private long totalRecovered;
+    private long TotalRecovered;
 
-    private long newRecovered;
+    private long NewRecovered;
 
-    private long activeCases;
+    private long ActiveCases;
 
-    private long totalTests;
+    private long TotalTests;
 
-    private long oneCaseEveryXPeople;
+    private long one_Caseevery_X_ppl;
 
-    private long oneDeathEveryXPeople;
+    private long one_Deathevery_X_ppl;
 
-    private long oneTestEveryXPeople;
+    private long one_Testevery_X_ppl;
 
-    private double cases1MPop;
+    private double TotCases_1M_Pop;
 
-    private double deaths1MPop;
+    private double Deaths_1M_pop;
 
-    private double tests1MPop;
+    private double Tests_1M_Pop;
 
     // Constructor for World Data
-    public Metrics(long totalCases, long newCases, long totalDeaths, long newDeaths, long totalRecovered, long newRecovered, long activeCases, double cases1MPop, double deaths1MPop) {
-        this.totalCases = totalCases;
-        this.newCases = newCases;
-        this.totalDeaths = totalDeaths;
-        this.newDeaths = newDeaths;
-        this.totalRecovered = totalRecovered;
-        this.newRecovered = newRecovered;
-        this.activeCases = activeCases;
-        this.cases1MPop = cases1MPop;
-        this.deaths1MPop = deaths1MPop;
+    public Metrics(long TotalCases, long NewCases, long TotalDeaths, long NewDeaths, long TotalRecovered, long NewRecovered, long ActiveCases, double TotCases_1M_Pop, double Deaths_1M_pop) {
+        this.TotalCases = TotalCases;
+        this.NewCases = NewCases;
+        this.TotalDeaths = TotalDeaths;
+        this.NewDeaths = NewDeaths;
+        this.TotalRecovered = TotalRecovered;
+        this.NewRecovered = NewRecovered;
+        this.ActiveCases = ActiveCases;
+        this.TotCases_1M_Pop = TotCases_1M_Pop;
+        this.Deaths_1M_pop = Deaths_1M_pop;
     }
 
     // Constructor for Country Data
-    public Metrics(String name, String continent, String isoCode, long population, long totalCases, long newCases, long totalDeaths, 
-    long newDeaths, long totalRecovered, long newRecovered, long activeCases, long totalTests, long oneCaseEveryXPeople, 
-    long oneDeathEveryXPeople, long oneTestEveryXPeople, double cases1MPop, double deaths1MPop, double tests1MPop) {
-        this.name = name;
-        this.continent = continent;
-        this.isoCode = isoCode;
-        this.population = population;
-        this.totalCases = totalCases;
-        this.newCases = newCases;
-        this.totalDeaths = totalDeaths;
-        this.newDeaths = newDeaths;
-        this.totalRecovered = totalRecovered;
-        this.newRecovered = newRecovered;
-        this.activeCases = activeCases;
-        this.totalTests = totalTests;
-        this.oneCaseEveryXPeople = oneCaseEveryXPeople;
-        this.oneDeathEveryXPeople = oneDeathEveryXPeople;
-        this.oneTestEveryXPeople = oneTestEveryXPeople;
-        this.cases1MPop = cases1MPop;
-        this.deaths1MPop = deaths1MPop;
-        this.tests1MPop = tests1MPop;
+    public Metrics(String Country, String Continent, String ThreeLetterSymbol, long Population, long TotalCases, long NewCases, long TotalDeaths, 
+    long NewDeaths, long TotalRecovered, long NewRecovered, long ActiveCases, long TotalTests, long one_Caseevery_X_ppl, 
+    long one_Deathevery_X_ppl, long one_Testevery_X_ppl, double TotCases_1M_Pop, double Deaths_1M_pop, double Tests_1M_Pop) {
+        this.Country = Country;
+        this.Continent = Continent;
+        this.ThreeLetterSymbol = ThreeLetterSymbol;
+        this.Population = Population;
+        this.TotalCases = TotalCases;
+        this.NewCases = NewCases;
+        this.TotalDeaths = TotalDeaths;
+        this.NewDeaths = NewDeaths;
+        this.TotalRecovered = TotalRecovered;
+        this.NewRecovered = NewRecovered;
+        this.ActiveCases = ActiveCases;
+        this.TotalTests = TotalTests;
+        this.one_Caseevery_X_ppl = one_Caseevery_X_ppl;
+        this.one_Deathevery_X_ppl = one_Deathevery_X_ppl;
+        this.one_Testevery_X_ppl = one_Testevery_X_ppl;
+        this.TotCases_1M_Pop = TotCases_1M_Pop;
+        this.Deaths_1M_pop = Deaths_1M_pop;
+        this.Tests_1M_Pop = Tests_1M_Pop;
     }
 
-    public String getName() {
-        return this.name;
+    public String getCountry() {
+        return this.Country;
     }
 
     public String getContinent() {
-        return this.continent;
+        return this.Continent;
     }
 
-    public String getIsoCode() {
-        return this.isoCode;
+    public String getThreeLetterSymbol() {
+        return this.ThreeLetterSymbol;
     }
 
     public long getPopulation() {
-        return this.population;
+        return this.Population;
     }
 
     public long getTotalCases() {
-        return this.totalCases;
+        return this.TotalCases;
     }
 
     public long getNewCases() {
-        return this.newCases;
+        return this.NewCases;
     }
 
     public long getTotalDeaths() {
-        return this.totalDeaths;
+        return this.TotalDeaths;
     }
 
     public long getNewDeaths() {
-        return this.newDeaths;
+        return this.NewDeaths;
     }
 
     public long getTotalRecovered() {
-        return this.totalRecovered;
+        return this.TotalRecovered;
     }
 
     public long getNewRecovered() {
-        return this.newRecovered;
+        return this.NewRecovered;
     }
 
     public long getActiveCases() {
-        return this.activeCases;
+        return this.ActiveCases;
     }
 
     public long getTotalTests() {
-        return this.totalTests;
+        return this.TotalTests;
     }
 
-    public long getOneCaseEveryXPeople() {
-        return this.oneCaseEveryXPeople;
+    public long getOne_Caseevery_X_ppl() {
+        return this.one_Caseevery_X_ppl;
     }
 
-    public long getOneDeathEveryXPeople() {
-        return this.oneDeathEveryXPeople;
+    public long getOne_Deathevery_X_ppl() {
+        return this.one_Deathevery_X_ppl;
     }
 
-    public long getOneTestEveryXPeople() {
-        return this.oneTestEveryXPeople;
+    public long getOne_Testevery_X_ppl() {
+        return this.one_Testevery_X_ppl;
     }
 
-    public double getCases1MPop() {
-        return this.cases1MPop;
+    public double getTotCases_1M_Pop() {
+        return this.TotCases_1M_Pop;
     }
 
-    public double getDeaths1MPop() {
-        return this.deaths1MPop;
+    public double getDeaths_1M_pop() {
+        return this.Deaths_1M_pop;
     }
 
-    public double getTests1MPop() {
-        return this.tests1MPop;
+    public double getTests_1M_Pop() {
+        return this.Tests_1M_Pop;
     }
 
 
     @Override
     public String toString() {
         return "{" +
-            " name='" + getName() + "'" +
-            ", continent='" + getContinent() + "'" +
-            ", isoCode='" + getIsoCode() + "'" +
-            ", population='" + getPopulation() + "'" +
-            ", totalCases='" + getTotalCases() + "'" +
-            ", newCases='" + getNewCases() + "'" +
-            ", totalDeaths='" + getTotalDeaths() + "'" +
-            ", newDeaths='" + getNewDeaths() + "'" +
-            ", totalRecovered='" + getTotalRecovered() + "'" +
-            ", newRecovered='" + getNewRecovered() + "'" +
-            ", activeCases='" + getActiveCases() + "'" +
-            ", totalTests='" + getTotalTests() + "'" +
-            ", oneCaseEveryXPeople='" + getOneCaseEveryXPeople() + "'" +
-            ", oneDeathEveryXPeople='" + getOneDeathEveryXPeople() + "'" +
-            ", oneTestEveryXPeople='" + getOneTestEveryXPeople() + "'" +
-            ", cases1MPop='" + getCases1MPop() + "'" +
-            ", deaths1MPop='" + getDeaths1MPop() + "'" +
-            ", tests1MPop='" + getTests1MPop() + "'" +
+            " Country='" + getCountry() + "'" +
+            ", Continent='" + getContinent() + "'" +
+            ", ThreeLetterSymbol='" + getThreeLetterSymbol() + "'" +
+            ", Population='" + getPopulation() + "'" +
+            ", TotalCases='" + getTotalCases() + "'" +
+            ", NewCases='" + getNewCases() + "'" +
+            ", TotalDeaths='" + getTotalDeaths() + "'" +
+            ", NewDeaths='" + getNewDeaths() + "'" +
+            ", TotalRecovered='" + getTotalRecovered() + "'" +
+            ", NewRecovered='" + getNewRecovered() + "'" +
+            ", ActiveCases='" + getActiveCases() + "'" +
+            ", TotalTests='" + getTotalTests() + "'" +
+            ", one_Caseevery_X_ppl='" + getOne_Caseevery_X_ppl() + "'" +
+            ", one_Deathevery_X_ppl='" + getOne_Deathevery_X_ppl() + "'" +
+            ", one_Testevery_X_ppl='" + getOne_Testevery_X_ppl() + "'" +
+            ", TotCases_1M_Pop='" + getTotCases_1M_Pop() + "'" +
+            ", Deaths_1M_pop='" + getDeaths_1M_pop() + "'" +
+            ", Tests_1M_Pop='" + getTests_1M_Pop() + "'" +
             "}";
     }
 

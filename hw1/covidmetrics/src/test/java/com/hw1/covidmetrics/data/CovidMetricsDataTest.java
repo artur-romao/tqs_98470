@@ -17,9 +17,9 @@ public class CovidMetricsDataTest {
         0, 1900, 0, 97149, 0, 145, 1499795, 
         350, 18280, 23, 2856, 55, 43181);
 
-        assertEquals("Angola", countryMetrics.getName());
+        assertEquals("Angola", countryMetrics.getCountry());
         assertEquals("Africa", countryMetrics.getContinent());
-        assertEquals("ago", countryMetrics.getIsoCode());
+        assertEquals("ago", countryMetrics.getThreeLetterSymbol());
         assertEquals(34732793, countryMetrics.getPopulation());
         assertEquals(99194, countryMetrics.getTotalCases());
         assertEquals(0, countryMetrics.getNewCases());
@@ -29,12 +29,12 @@ public class CovidMetricsDataTest {
         assertEquals(0, countryMetrics.getNewRecovered());
         assertEquals(145, countryMetrics.getActiveCases());
         assertEquals(1499795, countryMetrics.getTotalTests());
-        assertEquals(350, countryMetrics.getOneCaseEveryXPeople());
-        assertEquals(18280, countryMetrics.getOneDeathEveryXPeople());
-        assertEquals(23, countryMetrics.getOneTestEveryXPeople());
-        assertEquals(2856, countryMetrics.getCases1MPop());
-        assertEquals(55, countryMetrics.getDeaths1MPop());
-        assertEquals(43181, countryMetrics.getTests1MPop());
+        assertEquals(350, countryMetrics.getOne_Caseevery_X_ppl());
+        assertEquals(18280, countryMetrics.getOne_Deathevery_X_ppl());
+        assertEquals(23, countryMetrics.getOne_Testevery_X_ppl());
+        assertEquals(2856, countryMetrics.getTotCases_1M_Pop());
+        assertEquals(55, countryMetrics.getDeaths_1M_pop());
+        assertEquals(43181, countryMetrics.getTests_1M_Pop());
 
         // deaths + recovered <= total cases
         long totalCases = countryMetrics.getTotalCases();

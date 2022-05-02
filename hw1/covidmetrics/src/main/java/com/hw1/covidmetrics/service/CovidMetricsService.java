@@ -4,7 +4,12 @@ package com.hw1.covidmetrics.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import com.hw1.covidmetrics.model.Cache;
 import com.hw1.covidmetrics.model.Country;
 import com.hw1.covidmetrics.model.Metrics;
 
@@ -17,11 +22,21 @@ public class CovidMetricsService {
     
     private HttpRequestService api = new HttpRequestService();
 
+    private Cache cache = new Cache();
+
     public Metrics getWorldData() throws IOException, InterruptedException {
-        String response = api.doHttpGet("/npm-covid-data/world");
-        JSONArray arrayJson = new JSONArray(response);
-        JSONObject responseJson = arrayJson.getJSONObject(0); // if it goes wrong do: JSONObject responseJson = (JSONObject) arrayJson.get(0);
         
+        if (cache.getEntry("world") != null) {
+            return (Metrics) cache.getEntry("world");
+        }
+        
+        String response = api.doHttpGet("/npm-covid-data/world");
+        //System.out.println(response);
+        JSONArray arrayJson = new JSONArray(response);
+        JSONObject responseJson = (JSONObject) arrayJson.get(0); // if it goes wrong do: JSONObject responseJson = (JSONObject) arrayJson.get(0);
+        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        //System.out.println(responseJson.toString()); 
+
         Long totalCases = Long.parseLong(responseJson.get("TotalCases").toString());
         Long newCases = Long.parseLong(responseJson.get("NewCases").toString());
         Long totalDeaths = Long.parseLong(responseJson.get("TotalDeaths").toString());
@@ -33,13 +48,20 @@ public class CovidMetricsService {
         Double deaths1MPop = Double.parseDouble(responseJson.get("Deaths_1M_pop").toString());
 
         Metrics worldMetrics = new Metrics(totalCases, newCases, totalDeaths, newDeaths, totalRecovered, newRecovered, activeCases, cases1MPop, deaths1MPop);
+        cache.addEntry("world", worldMetrics);
 
         return worldMetrics;
     }
 
     public ArrayList<Country> getListOfCountries() throws IOException, InterruptedException {
+        if (cache.getEntry("countries") != null) {
+            ArrayList<Country> list = (ArrayList<Country>) cache.getEntry("countries");
+            return list;
+        }
+        
         String response = api.doHttpGet("/npm-covid-data/countries-name-ordered");
         JSONArray arrayJson = new JSONArray(response);
+        
         ArrayList<Country> countries = new ArrayList<>();
 
         for (int i = 0; i < arrayJson.length(); i++) {
@@ -49,10 +71,16 @@ public class CovidMetricsService {
             countries.add(new Country(country, isoCode));
         }
 
+        cache.addEntry("countries", countries);
         return countries;
     }
 
     public Metrics getCountryData(String country, String isoCode) throws IOException, InterruptedException {
+        String key = country + "/" + isoCode;
+        if (cache.getEntry(key) != null) {
+            return (Metrics) cache.getEntry(key);
+        }
+
         country = country.replaceAll(" ", "%20"); // so URLs of countries with spaces don't give any troubles
         String response = api.doHttpGet("/npm-covid-data/country-report-iso-based/" + country + "/" + isoCode);
         JSONArray arrayJson = new JSONArray(response);
@@ -72,11 +100,12 @@ public class CovidMetricsService {
         Long oneCaseEveryXPeople = Long.parseLong(responseJson.get("one_Caseevery_X_ppl").toString());
         Long oneDeathEveryXPeople = Long.parseLong(responseJson.get("one_Deathevery_X_ppl").toString());
         Long oneTestEveryXPeople = Long.parseLong(responseJson.get("one_Testevery_X_ppl").toString());
-        Long cases1MPop = Long.parseLong(responseJson.get("TotCases_1M_Pop").toString());
-        Long deaths1MPop = Long.parseLong(responseJson.get("Deaths_1M_pop").toString());
-        Long tests1MPop = Long.parseLong(responseJson.get("Tests_1M_Pop").toString());
+        Double cases1MPop = Double.parseDouble(responseJson.get("TotCases_1M_Pop").toString());
+        Double deaths1MPop = Double.parseDouble(responseJson.get("Deaths_1M_pop").toString());
+        Double tests1MPop = Double.parseDouble(responseJson.get("Tests_1M_Pop").toString());
 
         Metrics countryMetrics = new Metrics(name, continent, isoCode, population, totalCases, newCases, totalDeaths, newDeaths, totalRecovered, newRecovered, activeCases, totalTests, oneCaseEveryXPeople, oneDeathEveryXPeople, oneTestEveryXPeople, cases1MPop, deaths1MPop, tests1MPop);
+        cache.addEntry(key, countryMetrics);
 
         return countryMetrics;
     }
@@ -108,5 +137,5 @@ public class CovidMetricsService {
 
         return countryMetrics;
     }
-
+    
 }

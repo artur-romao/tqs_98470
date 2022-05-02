@@ -97,7 +97,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(totalCases, 0, 'COMMA', 0, 'POINT')}"></h3>
+                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(worldData.TotalCases, 0, 'COMMA', 0, 'POINT')}"></h3>
 
                   <p style="text-align: center;">Confirmed Cases</p>
                 </div>
@@ -111,7 +111,7 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(totalDeaths, 0, 'COMMA', 0, 'POINT')}"></h3>
+                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(worldData.TotalDeaths, 0, 'COMMA', 0, 'POINT')}"></h3>
 
                   <p style="text-align: center;">Deaths</p>
                 </div>
@@ -125,7 +125,7 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(totalRecovered, 0, 'COMMA', 0, 'POINT')}"></h3>
+                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(worldData.TotalRecovered, 0, 'COMMA', 0, 'POINT')}"></h3>
                   <p style="text-align: center;">Recovered</p>
                 </div>
                 <div class="icon">

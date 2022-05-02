@@ -15,7 +15,7 @@ public class CovidMetricsCacheTest {
 
     @BeforeEach
     void setUp() {
-        this.cache = new Cache();
+        this.cache = new Cache(5); // ttl = 5 secs
     }
 
     @AfterEach
@@ -61,5 +61,20 @@ public class CovidMetricsCacheTest {
         assertEquals(1, this.cache.getMisses()); // 1 miss
     }
 
-    
+    @Test
+    void ttlTest() throws InterruptedException {
+        this.cache.addEntry("Portugal", 10000000);
+        this.cache.addEntry("Romania", 8000000);
+        assertEquals(2, cache.size());
+
+        try {
+            Thread.sleep(6000); // remember cache has ttl = 5 secs so, giving a sleep of 6 secs will delete all entries in the next access
+            assertEquals(null, this.cache.getEntry("Portugal"));
+            assertEquals(null, this.cache.getEntry("Romania"));
+            assertEquals(0, cache.size());
+        } catch (InterruptedException e) {
+            System.out.println("Interruption detected");
+        }
+        
+    }
 }

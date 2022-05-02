@@ -79,7 +79,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-12">
-              <h1>Select a country and a period to analyse it's Covid-19 statistics:</h1>
+              <h1>Select a period to analyse the country's Covid-19 statistics:</h1>
               <ul class="nav nav-pills ml-auto p-2">
                 <li class="nav-item dropdown show" style="margin-left: 25px;">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">Period<span class="caret"></span></a>
@@ -98,11 +98,11 @@
         <div class="container-fluid">
           <div class="container" style="justify-content: center; display: flex;">
             <div class="card" style="width: 75%; align-items: center;">
-              <img th:src="'https://countryflagsapi.com/png/' + ${countryData.isoCode}" style="width:25%; margin-top: 1.5rem;">
+              <img th:src="'https://countryflagsapi.com/png/' + ${countryData.ThreeLetterSymbol}" style="width:25%; margin-top: 1.5rem;">
               <div class="container">
-                <h4 style="text-align: center;"><b th:text="${countryData.name}"></b></br><p style="font-size: 16px; text-transform: uppercase;" th:text="${countryData.isoCode}"></p></h4>
-                <p th:utext="'&lt;strong&gt;Continent: &lt;/strong&gt;' + ${countryData.continent}"></p>
-                <p th:utext="'&lt;strong&gt;Population: &lt;/strong&gt;' + ${#numbers.formatDecimal(countryData.population, 0, 'COMMA', 0, 'POINT')}"></p>
+                <h4 style="text-align: center;"><b th:text="${countryData.Country}"></b></br><p style="font-size: 16px; text-transform: uppercase;" th:text="${countryData.ThreeLetterSymbol}"></p></h4>
+                <p th:utext="'&lt;strong&gt;Continent: &lt;/strong&gt;' + ${countryData.Continent}"></p>
+                <p th:utext="'&lt;strong&gt;Population: &lt;/strong&gt;' + ${#numbers.formatDecimal(countryData.Population, 0, 'COMMA', 0, 'POINT')}"></p>
               </div>
             </div>
           </div>
@@ -111,8 +111,8 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(countryData.totalCases, 0, 'COMMA', 0, 'POINT')}"></h3>
-                  <h6 style="text-align: center;" th:text="'+' + ${#numbers.formatDecimal(countryData.newCases, 0, 'COMMA', 0, 'POINT')}"></h6>
+                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(countryData.TotalCases, 0, 'COMMA', 0, 'POINT')}"></h3>
+                  <h6 style="text-align: center;" th:text="'+' + ${#numbers.formatDecimal(countryData.NewCases, 0, 'COMMA', 0, 'POINT')}"></h6>
                   <p style="text-align: center;">Confirmed Cases</p>
                 </div>
                 <div class="icon">
@@ -125,8 +125,8 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(countryData.totalDeaths, 0, 'COMMA', 0, 'POINT')}"></h3>
-                  <h6 style="text-align: center;" th:text="'+' + ${#numbers.formatDecimal(countryData.newDeaths, 0, 'COMMA', 0, 'POINT')}"></h6>
+                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(countryData.TotalDeaths, 0, 'COMMA', 0, 'POINT')}"></h3>
+                  <h6 style="text-align: center;" th:text="'+' + ${#numbers.formatDecimal(countryData.NewDeaths, 0, 'COMMA', 0, 'POINT')}"></h6>
                   <p style="text-align: center;">Deaths</p>
                 </div>
                 <div class="icon">
@@ -139,8 +139,8 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(countryData.totalRecovered, 0, 'COMMA', 0, 'POINT')}"></h3>
-                  <h6 style="text-align: center;" th:text="'+' + ${#numbers.formatDecimal(countryData.newRecovered, 0, 'COMMA', 0, 'POINT')}"></h6>
+                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(countryData.TotalRecovered, 0, 'COMMA', 0, 'POINT')}"></h3>
+                  <h6 style="text-align: center;" th:text="'+' + ${#numbers.formatDecimal(countryData.NewRecovered, 0, 'COMMA', 0, 'POINT')}"></h6>
                   <p style="text-align: center;">Recovered</p>
                 </div>
                 <div class="icon">
@@ -153,7 +153,7 @@
               <!-- small box -->
               <div class="small-box bg-secondary">
                 <div class="inner">
-                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(countryData.totalTests, 0, 'COMMA', 0, 'POINT')}"></h3>
+                  <h3 style="text-align: center;" th:text="${#numbers.formatDecimal(countryData.TotalTests, 0, 'COMMA', 0, 'POINT')}"></h3>
                   <h6 style="text-align: center; ">[NO DATA]</h6>
                   <p style="text-align: center;">Total Tests</p>
                 </div>
@@ -181,10 +181,10 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td th:text="${#numbers.formatDecimal(countryData.activeCases, 0, 'COMMA', 0, 'POINT')}"></td>
-                        <td th:text="${#numbers.formatDecimal(countryData.cases1MPop, 0, 'COMMA', 0, 'POINT')}"></td>
-                        <td th:text="${#numbers.formatDecimal(countryData.deaths1MPop, 0, 'COMMA', 0, 'POINT')}"></td>
-                        <td th:text="${#numbers.formatDecimal(countryData.tests1MPop, 0, 'COMMA', 0, 'POINT')}"></td>
+                        <td th:text="${#numbers.formatDecimal(countryData.ActiveCases, 0, 'COMMA', 0, 'POINT')}"></td>
+                        <td th:text="${#numbers.formatDecimal(countryData.TotCases_1M_Pop, 0, 'COMMA', 0, 'POINT')}"></td>
+                        <td th:text="${#numbers.formatDecimal(countryData.Deaths_1M_pop, 0, 'COMMA', 0, 'POINT')}"></td>
+                        <td th:text="${#numbers.formatDecimal(countryData.Tests_1M_Pop, 0, 'COMMA', 0, 'POINT')}"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -199,9 +199,9 @@
                   <h3 class="card-title"><strong>Relevant facts</strong></h3>
                 </div>
                 <div class="card-body">
-                  <p th:text="'In ' + ${countryData.name} + ' there is 1 Covid-19 case for every ' + ${#numbers.formatDecimal(countryData.oneCaseEveryXPeople, 0, 'COMMA', 0, 'POINT')} + ' people.'"></p>
-                  <p th:text="'In ' + ${countryData.name} + ' there is 1 Covid-19 death cause for every ' + ${#numbers.formatDecimal(countryData.oneDeathEveryXPeople, 0, 'COMMA', 0, 'POINT')} + ' people.'"></p>
-                  <p th:text="'In ' + ${countryData.name} + ' 1 Covid-19 test is made for every ' + ${#numbers.formatDecimal(countryData.oneTestEveryXPeople, 0, 'COMMA', 0, 'POINT')} + ' people.'"></p>
+                  <p th:text="'In ' + ${countryData.Country} + ' there is 1 Covid-19 case for every ' + ${#numbers.formatDecimal(countryData.one_Caseevery_X_ppl, 0, 'COMMA', 0, 'POINT')} + ' people.'"></p>
+                  <p th:text="'In ' + ${countryData.Country} + ' there is 1 Covid-19 death cause for every ' + ${#numbers.formatDecimal(countryData.one_Deathevery_X_ppl, 0, 'COMMA', 0, 'POINT')} + ' people.'"></p>
+                  <p th:text="'In ' + ${countryData.Country} + ' 1 Covid-19 test is made for every ' + ${#numbers.formatDecimal(countryData.one_Testevery_X_ppl, 0, 'COMMA', 0, 'POINT')} + ' people.'"></p>
                 </div>
             </div>
           </div>

@@ -15,7 +15,11 @@ public class Cache {
     private long maxTTL;
 
     public Cache() {
-        this.maxTTL = 30 * 120 * 12; // 12 hours of max cache time seemed reasonable
+        this.maxTTL = 60 * 1000; // 60 seconds of max cache time seemed reasonable
+    }
+
+    public Cache(long maxTTL) {
+        this.maxTTL = maxTTL * 1000; // cache with defined max ttl
     }
 
     public void addEntry(String key, Object content) {

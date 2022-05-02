@@ -24,12 +24,15 @@ public class CovidMetricsController {
     public ModelAndView index(Model model) throws IOException, InterruptedException {
         Metrics worldData = service.getWorldData();
         
-        model.addAttribute("totalCases", String.valueOf(worldData.getTotalCases()));
-        model.addAttribute("totalDeaths", String.valueOf(worldData.getTotalDeaths()));
-        model.addAttribute("totalRecovered", String.valueOf(worldData.getTotalRecovered()));
-
+        model.addAttribute("worldData", worldData);
+        
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
+
+        modelAndView.addObject("TotalCases", worldData.getTotalCases());
+        modelAndView.addObject("TotalDeaths", worldData.getTotalDeaths());
+        modelAndView.addObject("TotalRecovered", worldData.getTotalRecovered());
+
         return modelAndView;
     }
 
@@ -41,6 +44,11 @@ public class CovidMetricsController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("world");
+
+        modelAndView.addObject("TotalCases", worldData.getTotalCases());
+        modelAndView.addObject("TotalDeaths", worldData.getTotalDeaths());
+        modelAndView.addObject("TotalRecovered", worldData.getTotalRecovered());
+
         return modelAndView;
     }
 
@@ -62,6 +70,12 @@ public class CovidMetricsController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("country");
+
+        modelAndView.addObject("Country", countryData.getCountry());
+        modelAndView.addObject("ThreeLetterSymbol", countryData.getThreeLetterSymbol());
+        modelAndView.addObject("Continent", countryData.getContinent());
+        modelAndView.addObject("Population", countryData.getPopulation());
+        
         return modelAndView;
     }
 }
