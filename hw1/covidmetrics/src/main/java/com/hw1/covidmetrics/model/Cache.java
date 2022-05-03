@@ -15,7 +15,7 @@ public class Cache {
     private long maxTTL;
 
     public Cache() {
-        this.maxTTL = 60 * 1000; // 60 seconds of max cache time seemed reasonable
+        this.maxTTL = (long) 60 * 1000; // 60 seconds of max cache time seemed reasonable
     }
 
     public Cache(long maxTTL) {
