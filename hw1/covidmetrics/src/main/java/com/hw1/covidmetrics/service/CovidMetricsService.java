@@ -1,21 +1,18 @@
 package com.hw1.covidmetrics.service;
 
-
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import com.hw1.covidmetrics.model.Cache;
 import com.hw1.covidmetrics.model.Country;
 import com.hw1.covidmetrics.model.Metrics;
 
 import org.springframework.stereotype.Service;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class CovidMetricsService {
@@ -24,18 +21,18 @@ public class CovidMetricsService {
 
     private Cache cache = new Cache();
 
+    private static final Logger log = LoggerFactory.getLogger(CovidMetricsService.class);
+
     public Metrics getWorldData() throws IOException, InterruptedException {
         
         if (cache.getEntry("world") != null) {
+            log.info("[CACHE] Getting world metrics.");
             return (Metrics) cache.getEntry("world");
         }
         
         String response = api.doHttpGet("/npm-covid-data/world");
-        //System.out.println(response);
         JSONArray arrayJson = new JSONArray(response);
-        JSONObject responseJson = (JSONObject) arrayJson.get(0); // if it goes wrong do: JSONObject responseJson = (JSONObject) arrayJson.get(0);
-        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        //System.out.println(responseJson.toString()); 
+        JSONObject responseJson = (JSONObject) arrayJson.get(0);
 
         Long totalCases = Long.parseLong(responseJson.get("TotalCases").toString());
         Long newCases = Long.parseLong(responseJson.get("NewCases").toString());
@@ -50,12 +47,16 @@ public class CovidMetricsService {
         Metrics worldMetrics = new Metrics(totalCases, newCases, totalDeaths, newDeaths, totalRecovered, newRecovered, activeCases, cases1MPop, deaths1MPop);
         cache.addEntry("world", worldMetrics);
 
+        log.info("[CACHE] Stored world metrics.");
+        log.info("[APP] Returning world metrics.");
+
         return worldMetrics;
     }
 
     public ArrayList<Country> getListOfCountries() throws IOException, InterruptedException {
         if (cache.getEntry("countries") != null) {
             ArrayList<Country> list = (ArrayList<Country>) cache.getEntry("countries");
+            log.info("[CACHE] Getting list of countries.");
             return list;
         }
         
@@ -72,12 +73,17 @@ public class CovidMetricsService {
         }
 
         cache.addEntry("countries", countries);
+        
+        log.info("[CACHE] Stored list of countries.");
+        log.info("[APP] Returning list of countries.");
+
         return countries;
     }
 
     public Metrics getCountryData(String country, String isoCode) throws IOException, InterruptedException {
         String key = country + "/" + isoCode;
         if (cache.getEntry(key) != null) {
+            log.info("[CACHE] Getting " + country + " metrics.");
             return (Metrics) cache.getEntry(key);
         }
 
@@ -107,9 +113,14 @@ public class CovidMetricsService {
         Metrics countryMetrics = new Metrics(name, continent, isoCode, population, totalCases, newCases, totalDeaths, newDeaths, totalRecovered, newRecovered, activeCases, totalTests, oneCaseEveryXPeople, oneDeathEveryXPeople, oneTestEveryXPeople, cases1MPop, deaths1MPop, tests1MPop);
         cache.addEntry(key, countryMetrics);
 
+        log.info("[CACHE] Stored " + country + " metrics.");
+        log.info("[APP] Returning " + country + " metrics.");
+
         return countryMetrics;
     }
     
+
+    // Not implemented for lack of time
     public Metrics getLast6MCountryData(String country, String isoCode) throws IOException, InterruptedException {
         String response = api.doHttpGet("/covid-ovid-data/");
         JSONArray arrayJson = new JSONArray(response);

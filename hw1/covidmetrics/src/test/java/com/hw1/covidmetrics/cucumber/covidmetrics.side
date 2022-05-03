@@ -1,0 +1,95 @@
+{
+  "id": "fa39c147-95c5-4ab7-a308-9649d405c57b",
+  "version": "2.0",
+  "name": "covidmetrics",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "bed017b2-c540-4d3e-b327-fb8e4e39d1ca",
+    "name": "Selenium",
+    "commands": [{
+      "id": "5ed5204b-26a6-40a2-94aa-f702fef592d0",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a141693b-c315-44da-b2e8-b2dac4d3e0b8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x839",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4f7c67ba-e660-4d8e-8974-d2473de04c84",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(1) p",
+      "targets": [
+        ["css=.nav-item:nth-child(1) p", "css:finder"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Worldwide Statistics')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "db146a9c-5126-458f-8e27-cabe25a55497",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Country Statistics",
+      "targets": [
+        ["linkText=Country Statistics", "linkText"],
+        ["css=.nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(@href, 'country')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d6f1eccb-a025-41b0-8e77-a45bbd5a6f9c",
+      "comment": "",
+      "command": "select",
+      "target": "css=select",
+      "targets": [],
+      "value": "label=Portugal"
+    }, {
+      "id": "8aaa8dae-6819-4052-99c0-00945f9106c0",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "css=select",
+      "targets": [
+        ["css=select", "css:finder"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-0.5,-0.9499969482421875"
+    }, {
+      "id": "0726567d-ce6d-4049-92f3-201d47e64157",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "css=select",
+      "targets": [
+        ["css=select", "css:finder"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-0.5,-0.9499969482421875"
+    }, {
+      "id": "cdfa9186-b804-4a9a-a339-f82eee4c7eb0",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "css=select",
+      "targets": [
+        ["css=select", "css:finder"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-0.5,-0.9499969482421875"
+    }]
+  }],
+  "suites": [{
+    "id": "845e0976-5fa9-40b7-afc5-3277fc9af70c",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["bed017b2-c540-4d3e-b327-fb8e4e39d1ca"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
